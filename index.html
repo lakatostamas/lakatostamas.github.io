@@ -8,12 +8,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="manifest" href="site.webmanifest">
+        <style>
+            .video-container {
+                position: relative;
+            }
+            .video-overlay {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+            }
+        </style>
     </head>
     <body>
-        <p>Testing videotag + iframe</p>
-        <div>
             <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video>
+            <div class="video-container">
+                <div class="video-overlay"></div>
+                <video id="VideoOne" src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video>
         </div>
-        <iframe src="https://lakatostamas.github.io" width="500" height="400"></iframe>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelector('.video-overlay')
+                    .addEventListener('click', function() {
+                        console.log('clicked');
+                        document.querySelector('#VideoOne').play();
+                    });
+            });
+        </script>
     </body>
 </html>
